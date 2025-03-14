@@ -1,4 +1,4 @@
-import time
+import time, infra
 import threading
 from pynput import mouse, keyboard
 
@@ -7,7 +7,7 @@ class IdleListener:
 
     def __init__(self, on_idle, after_idle):
 
-        self.IDLE_THRESHOLD = 100
+        self.IDLE_THRESHOLD = infra.get('threshold')
         self.last_activity_time = time.time()
         self.is_idle = False
         self.on_idle = on_idle
@@ -31,11 +31,11 @@ class IdleListener:
     # Function to check if the system is idle
     def check_idle(self):
 
-        while True:
+        while infra.get('is_active'):
             # Calculate idle time
             idle_time = time.time() - self.last_activity_time
 
-            print("idle time --> ",idle_time)
+            print(idle_time)
             
             if idle_time > self.IDLE_THRESHOLD:
                 if not self.is_idle:

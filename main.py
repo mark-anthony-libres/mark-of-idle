@@ -1,6 +1,6 @@
+import logger
 from idle_listener import IdleListener
-import pyautogui
-import time
+import time, infra
 import pygetwindow as gw
 import pyautogui
 import threading
@@ -10,8 +10,7 @@ from mouse_listener import MouseListener
 from keyboard_listener import KeyboardListener
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
-pyautogui.FAILSAFE = False  # Disable fail-safe feature
-
+pyautogui.FAILSAFE = False
 
 class Main():
 
@@ -105,9 +104,6 @@ class Main():
                 break
 
             value, _type, state = self.move_and_get_positions(self.position_instance.get_heading_towards_position())
-
-            if _type == 3 and value == None:
-                exit() 
             
             if value is None:
                 break
@@ -146,6 +142,6 @@ class Main():
 
 
 
-
-    
+print("--- Started ---")
 Main()
+print("=== Stopped ===")

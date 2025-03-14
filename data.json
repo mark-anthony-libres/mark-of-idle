@@ -1,0 +1,5 @@
+{
+  "threshold": 100,
+  "is_active": false,
+  "start_on_boot": false
+}
